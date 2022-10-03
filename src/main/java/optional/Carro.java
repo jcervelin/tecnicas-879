@@ -34,4 +34,24 @@ public class Carro implements Comparable<Carro> {
     public void setMotor(Motor motor) {
         this.motor = motor;
     }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public Carro(String marca, String modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+
+    }
+
+
+    @Override
+    public int compareTo(Carro outro) {
+        return this.marca.compareTo(outro.getMarca());
+    }
 }
