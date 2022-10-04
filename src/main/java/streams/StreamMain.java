@@ -35,7 +35,10 @@ public class StreamMain {
         // flatMap NAO junta lista
         // flatMap junta STREAMS
 
-        final List<Integer> collect = listList.stream()
+
+
+        final List<Integer> collect = listList
+                .parallelStream()
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
     // reduce
