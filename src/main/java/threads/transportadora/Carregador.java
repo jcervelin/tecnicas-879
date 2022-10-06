@@ -1,11 +1,13 @@
 package threads.transportadora;
 
+import java.util.concurrent.BlockingQueue;
+
 public class Carregador implements Runnable {
 
-    private BaseFilaEntrega<String> filaEntrega;
+    private BlockingQueue<String> filaEntrega;
     private String carga;
 
-    public Carregador(BaseFilaEntrega<String> filaEntrega, String carga) {
+    public Carregador(BlockingQueue<String> filaEntrega, String carga) {
         this.filaEntrega = filaEntrega;
         this.carga = carga;
     }
@@ -13,7 +15,7 @@ public class Carregador implements Runnable {
     @Override
     public void run() {
         try {
-            filaEntrega.carregar(carga);
+            filaEntrega.put(carga);
             System.out.println(Thread.currentThread().getName() + " carregou um caminhao com " + carga);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

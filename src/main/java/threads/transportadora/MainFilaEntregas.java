@@ -1,10 +1,14 @@
 package threads.transportadora;
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
 public class MainFilaEntregas {
 
     public static void main(String[] args)  {
 
-        BaseFilaEntrega<String> fila = new FilaEntregas<>(3);
+    //    BaseFilaEntrega<String> fila = new FilaEntregas<>(3);
+        BlockingQueue<String> fila = new ArrayBlockingQueue<>(3);
 
         Carregador carregador1 = new Carregador(fila,"Arroz" );
         Carregador carregador2 = new Carregador(fila,"Feijao" );
