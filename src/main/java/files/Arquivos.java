@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Arquivos {
@@ -26,15 +27,15 @@ public class Arquivos {
         final Path path = Paths.get(caminhoMapa);
 
         final boolean exists = Files.exists(path);
-        //       System.out.println(exists);
+        // System.out.println(exists);
 
         final Path pathNaoExistente = Paths.get("/caminho/invalido");
 
-        //    System.out.println(Files.exists(pathNaoExistente));
+        // System.out.println(Files.exists(pathNaoExistente));
 
         final List<String> collect = Files
                 .lines(path)
-                .map(linha -> linha + " Banana de Pijamas")
+                .map(getStringStringFunction())
                 .collect(Collectors.toList());
 
         System.out.println(collect);
@@ -55,6 +56,12 @@ public class Arquivos {
             System.out.println("ABC " + i);
         }
 
+    }
+
+    private static Function<String, String> getStringStringFunction() {
+        return linha -> {
+            return linha + " Banana de Pijamas";
+        };
     }
 
     public static void lerEmBufferReader(File file) {
