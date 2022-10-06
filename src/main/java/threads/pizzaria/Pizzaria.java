@@ -17,7 +17,7 @@ public class Pizzaria implements Runnable {
 
         try{
             filaEntrega.put(pizza);
-            System.out.println(Thread.currentThread().getName() + " Entregou ao pizzaiolo a " + pizza );
+            System.out.println(Thread.currentThread().getName() + " Entregou ao pizza a " + pizza );
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
